@@ -3,9 +3,10 @@ const API_CALL_SUCCESS = "API_CALL_SUCCESS";
 const API_CALL_FAILURE = "API_CALL_FAILURE";
 
 const initialState = {
-  fetching: false,
   user: null,
-  error: false
+  users: [],
+  error: false,
+  fetching: false
 };
 
 export default (state = initialState, action) => {
@@ -13,7 +14,12 @@ export default (state = initialState, action) => {
     case API_CALL_REQUEST:
       return { ...state, fetching: true, error: null };
     case API_CALL_SUCCESS:
-      return { ...state, fetching: false, user: action.user };
+      return {
+        ...state,
+        user: null,
+        fetching: false,
+        users: [...state.users, action.user]
+      };
     case API_CALL_FAILURE:
       return { ...state, fetching: false, user: null, error: action.error };
     default:

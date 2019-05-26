@@ -5,6 +5,8 @@ import Pin from "./components/Pin";
 import SideBar from "./components/SideBar";
 import Modal from "./components/Modal";
 
+import { connect } from "react-redux";
+
 import { TOKEN, BrasilCoordenadas } from "../src/utils/constants";
 
 class App extends Component {
@@ -32,6 +34,8 @@ class App extends Component {
 
   handleSubmit(event) {
     event.preventDefault();
+
+    this.props.onRequestUser(this.state.value);
   }
 
   showModal = () => {
@@ -77,15 +81,28 @@ class App extends Component {
             longitude={-38.6135818}
             offsetLeft={-20}
             offsetTop={-10}
-          >
-            <Pin />
-          </Marker>
+          />
         </ReactMapGL>
-
         {this.renderModal()}
       </div>
     );
   }
 }
 
-export default App;
+const mapStateToProps = state => {
+  const { userReducer } = state;
+  return {
+    userResponse: userReducer
+  };
+};
+
+const mapDispatchToProps = dispatch => {
+  return {
+    onRequestUser: user => dispatch({ type: "API_CALL_REQUEST", user })
+  };
+};
+
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(App);
