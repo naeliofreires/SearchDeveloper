@@ -7,3 +7,5 @@ export const BrasilCoordenadas = {
 
 export const TOKEN =
   "pk.eyJ1IjoibmFlbGlvZnJlaXJlcyIsImEiOiJjanU3ajd1bzcxdXFqM3lwZ3I0NjJsM21wIn0.SEH716jSfhioGX58YSjm5g";
+
+export const KEY_GOOGLE = "AIzaSyBnjOlbhKlNiQasY-rmrsH5Jsdd1S2WwGM";

@@ -59,6 +59,7 @@ class App extends Component {
       </Modal>
     );
   };
+
   render() {
     return (
       <div>

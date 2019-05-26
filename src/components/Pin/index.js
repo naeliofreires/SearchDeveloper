@@ -17,6 +17,6 @@ class Pin extends Component {
 
 export default Pin;
 // https://maps.googleapis.com/maps/api/geocode/json?address=Fortaleza
-// &key=AIzaSyBnjOlbhKlNiQasY-rmrsH5Jsdd1S2WwGM
+// &key=
 
 // console.cloud.google.com criar conta for key
