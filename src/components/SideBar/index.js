@@ -1,7 +1,8 @@
 import React from "react";
-import { Container } from "./style";
 import Contact from "../Contact";
 import { connect } from "react-redux";
+import { Container } from "./style";
+
 const SideBar = ({ userResponse: { users } }) => (
   <Container>
     <div className="sub-container">
@@ -19,16 +20,13 @@ const SideBar = ({ userResponse: { users } }) => (
 );
 
 const mapStateToProps = state => {
-  console.log(state);
   const { userReducer } = state;
   return {
     userResponse: userReducer
   };
 };
 
-const mapDispatchToProps = dispatch => {};
-
 export default connect(
   mapStateToProps,
-  mapDispatchToProps
+  null
 )(SideBar);

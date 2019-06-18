@@ -65,6 +65,10 @@ class App extends Component {
   };
 
   render() {
+    const {
+      userResponse: { users }
+    } = this.props;
+
     return (
       <div>
         <ReactMapGL
@@ -75,13 +79,17 @@ class App extends Component {
           onClick={() => this.showModal()}
         >
           <SideBar />
-
-          <Marker
-            latitude={-4.5196092}
-            longitude={-38.6135818}
-            offsetLeft={-20}
-            offsetTop={-10}
-          />
+          {users.map(user => (
+            <Marker
+              key={user.id}
+              latitude={user.coordenadas_.lat}
+              longitude={user.coordenadas_.lng}
+              offsetLeft={-20}
+              offsetTop={-10}
+            >
+              <Pin avatar={user.avatar} />
+            </Marker>
+          ))}
         </ReactMapGL>
         {this.renderModal()}
       </div>
