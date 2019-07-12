@@ -6,6 +6,8 @@ import SideBar from "./components/SideBar";
 import Modal from "./components/Modal";
 
 import { connect } from "react-redux";
+import { bindActionCreators } from "redux";
+import { Creators as UserActions } from "./store/ducks/user";
 
 import { TOKEN, BrasilCoordenadas } from "../src/utils/constants";
 
@@ -35,7 +37,7 @@ class App extends Component {
   handleSubmit(event) {
     event.preventDefault();
 
-    this.props.onRequestUser(this.state.value);
+    this.props.userRequest(this.state.value);
   }
 
   showModal = () => {
@@ -66,8 +68,10 @@ class App extends Component {
 
   render() {
     const {
-      userResponse: { users }
+      user: { users }
     } = this.props;
+
+    console.log(this.props);
 
     return (
       <div>
@@ -98,17 +102,13 @@ class App extends Component {
 }
 
 const mapStateToProps = state => {
-  const { userReducer } = state;
   return {
-    userResponse: userReducer
+    user: state.user
   };
 };
 
-const mapDispatchToProps = dispatch => {
-  return {
-    onRequestUser: user => dispatch({ type: "API_CALL_REQUEST", user })
-  };
-};
+const mapDispatchToProps = dispatch =>
+  bindActionCreators(UserActions, dispatch);
 
 export default connect(
   mapStateToProps,

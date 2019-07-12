@@ -3,7 +3,7 @@ import Contact from "../Contact";
 import { connect } from "react-redux";
 import { Container } from "./style";
 
-const SideBar = ({ userResponse: { users } }) => (
+const SideBar = ({ user: { users } }) => (
   <Container>
     <div className="sub-container">
       {users.map(user => (
@@ -20,13 +20,9 @@ const SideBar = ({ userResponse: { users } }) => (
 );
 
 const mapStateToProps = state => {
-  const { userReducer } = state;
   return {
-    userResponse: userReducer
+    user: state.user
   };
 };
 
-export default connect(
-  mapStateToProps,
-  null
-)(SideBar);
+export default connect(mapStateToProps)(SideBar);
