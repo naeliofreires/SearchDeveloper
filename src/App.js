@@ -4,6 +4,7 @@ import ReactMapGL, { Marker } from "react-map-gl";
 import Pin from "./components/Pin";
 import SideBar from "./components/SideBar";
 import Modal from "./components/Modal";
+import Error from "./components/Error";
 
 import { connect } from "react-redux";
 import { bindActionCreators } from "redux";
@@ -36,7 +37,7 @@ class App extends Component {
 
   handleSubmit(event) {
     event.preventDefault();
-
+    this.setState({ value: "" });
     this.props.userRequest(this.state.value);
   }
 
@@ -71,10 +72,9 @@ class App extends Component {
       user: { users }
     } = this.props;
 
-    console.log(this.props);
-
     return (
-      <div>
+      <>
+        <Error />
         <ReactMapGL
           mapStyle="mapbox://styles/naeliofreires/cjt7v6wtq1mzu1fnkb97o667z"
           mapboxApiAccessToken={TOKEN}
@@ -96,7 +96,7 @@ class App extends Component {
           ))}
         </ReactMapGL>
         {this.renderModal()}
-      </div>
+      </>
     );
   }
 }
