@@ -1,5 +1,12 @@
-**Em desenvolvimento...**
-
-Um simples desafio da Rocketseat que propoem você utilizar a lib Map Box do Uber + API do Git Hub e assim fazer um 'search-dev'.
+# :computer: Aplicação Web em React JS
 
 ![Imagem de exemplo da aplicação](exemplo_01.png)
+
+## Tecnologias
+ - Map Box (Uber)
+ - :fire: API do GitHub
+ - Axios
+ - Google Maps
+ - Styled Components
+ - Redux
+ - Redux Saga
